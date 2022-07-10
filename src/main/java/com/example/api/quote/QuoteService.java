@@ -2,6 +2,7 @@ package com.example.api.quote;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class QuoteService {
     private final QuoteRepository quoteRepository;
+    private Random random = new Random();
 
     @Autowired
     public QuoteService(QuoteRepository quoteRepository) {
@@ -85,6 +87,12 @@ public class QuoteService {
             quoteObj.setAuthor(updateQuote.getAuthor());
         }
         quoteRepository.save(quoteObj);
+    }
+
+    public Quote getRandomQuote() {
+        List<Quote> quotes = quoteRepository.findAll();
+        int index = random.nextInt(quotes.size());
+        return quotes.get(index);
     }
 
 }

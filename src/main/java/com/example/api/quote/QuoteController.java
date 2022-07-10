@@ -50,4 +50,11 @@ public class QuoteController {
         quoteService.updateQuote(quote);
     }
 
+    @GetMapping(path = "/random")
+    public Quote getRandomQuote() {
+
+        return quoteService.getRandomQuote();
+
+    }
+
 }
