@@ -18,4 +18,8 @@ public class QuoteService {
         return quoteRepository.findAll();
     }
 
+    public void addQuote(Quote quote) {
+        quoteRepository.save(quote);
+    }
+
 }
