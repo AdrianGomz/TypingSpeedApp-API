@@ -1,6 +1,7 @@
 package com.example.api.quote;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,18 @@ public class QuoteService {
     }
 
     public void addQuote(Quote quote) {
-        quoteRepository.save(quote);
+        Optional<Quote> quoteExist = quoteRepository.findQuoteByTitle(quote.getTitle());
+        if (quoteExist.isPresent()) {
+            throw new IllegalStateException("Title taken");
+        } else if (quote.getQuote().length() > 700) {
+
+            throw new IllegalStateException("Quote is too long");
+        } else if (quote.getTitle().length() > 100) {
+            throw new IllegalStateException("Title is too long");
+        } else {
+            quoteRepository.save(quote);
+
+        }
     }
 
 }

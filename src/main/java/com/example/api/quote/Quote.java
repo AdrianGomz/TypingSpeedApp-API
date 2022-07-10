@@ -17,6 +17,7 @@ public class Quote {
     @SequenceGenerator(name = "quote_sequence", sequenceName = "quote_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_sequence")
     private Long id;
+    private String title;
     private String quote;
     private String author;
     private LocalDate publishedDate;
@@ -27,15 +28,17 @@ public class Quote {
 
     }
 
-    public Quote(Long id, String quote, String author, LocalDate publishedDate) {
+    public Quote(Long id, String title, String quote, String author, LocalDate publishedDate) {
         this.id = id;
+        this.title = title;
         this.quote = quote;
         this.author = author;
         this.publishedDate = publishedDate;
 
     }
 
-    public Quote(String quote, String author, LocalDate publishedDate) {
+    public Quote(String title, String quote, String author, LocalDate publishedDate) {
+        this.title = title;
         this.quote = quote;
         this.author = author;
         this.publishedDate = publishedDate;
@@ -48,6 +51,14 @@ public class Quote {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getQuote() {
