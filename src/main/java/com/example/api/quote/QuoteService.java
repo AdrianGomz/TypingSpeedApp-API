@@ -1,17 +1,21 @@
 package com.example.api.quote;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class QuoteService {
+    private final QuoteRepository quoteRepository;
+
+    @Autowired
+    public QuoteService(QuoteRepository quoteRepository) {
+        this.quoteRepository = quoteRepository;
+    }
+
     public List<Quote> getQuotes() {
-        return List.of(
-                new Quote(
-                        1L,
-                        "quote",
-                        "author",
-                        LocalDate.of(200, Month.JANUARY, 5)));
+        return quoteRepository.findAll();
     }
 
 }
