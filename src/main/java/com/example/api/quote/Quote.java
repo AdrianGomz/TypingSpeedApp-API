@@ -100,7 +100,7 @@ public class Quote {
 
     @Override
     public String toString() {
-        return "Quote{" + "id: " + id + "quote " + quote;
+        return "Quote{" + "id: " + id + ", quote: " + quote + " ,title:" + title + " ,author: " + author;
     }
 
 }

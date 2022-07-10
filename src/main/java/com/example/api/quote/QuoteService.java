@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class QuoteService {
@@ -40,6 +41,50 @@ public class QuoteService {
         } else {
             quoteRepository.deleteById(id);
         }
+    }
+
+    @Transactional
+    public void updateQuote(Long id, String title, String quote, String author) {
+        Quote quoteObj = quoteRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("Quote id:" + id + " does not exist"));
+        if (title != null && title.length() > 0) {
+            Optional<Quote> quoteExist = quoteRepository.findQuoteByTitle(title);
+            if (quoteExist.isPresent()) {
+                throw new IllegalStateException("Quote with title: " + title + " already exist");
+            } else {
+
+                quoteObj.setTitle(title);
+            }
+        }
+        if (quote != null && quote.length() > 0) {
+            quoteObj.setQuote(quote);
+        }
+        if (author != null && author.length() > 0) {
+            quoteObj.setAuthor(author);
+        }
+
+    }
+
+    public void updateQuote(Quote updateQuote) {
+        System.out.println(updateQuote);
+        Quote quoteObj = quoteRepository.findById(updateQuote.getId())
+                .orElseThrow(() -> new IllegalStateException("Quote id:" + updateQuote.getId() + " does not exist"));
+        if (updateQuote.getTitle() != null && updateQuote.getTitle().length() > 0) {
+            Optional<Quote> quoteExist = quoteRepository.findQuoteByTitle(updateQuote.getTitle());
+            if (quoteExist.isPresent()) {
+                throw new IllegalStateException("Quote with title: " + updateQuote.getTitle() + " already exist");
+            } else {
+                quoteObj.setTitle(updateQuote.getTitle());
+
+            }
+        }
+        if (updateQuote.getQuote() != null && updateQuote.getQuote().length() > 0) {
+            quoteObj.setQuote(updateQuote.getQuote());
+        }
+        if (updateQuote.getAuthor() != null && updateQuote.getAuthor().length() > 0) {
+            quoteObj.setAuthor(updateQuote.getAuthor());
+        }
+        quoteRepository.save(quoteObj);
     }
 
 }
