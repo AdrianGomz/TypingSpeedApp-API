@@ -34,4 +34,12 @@ public class QuoteService {
         }
     }
 
+    public void deleteQuote(Long id) {
+        if (!quoteRepository.existsById(id)) {
+            throw new IllegalStateException("Quote id:" + id + " does not exist");
+        } else {
+            quoteRepository.deleteById(id);
+        }
+    }
+
 }
