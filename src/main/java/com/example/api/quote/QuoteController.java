@@ -3,6 +3,7 @@ package com.example.api.quote;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,11 +24,13 @@ public class QuoteController {
         this.quoteService = quoteService;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
     public List<Quote> getQuotes() {
         return quoteService.getQuotes();
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
     public void registerQuote(@RequestBody Quote quote) {
         quoteService.addQuote(quote);
@@ -50,6 +53,7 @@ public class QuoteController {
         quoteService.updateQuote(quote);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(path = "/random")
     public Quote getRandomQuote() {
 
