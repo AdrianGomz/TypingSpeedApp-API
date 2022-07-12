@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/quotes")
+@RequestMapping(path = "")
 public class QuoteController {
     private final QuoteService quoteService;
 
@@ -24,8 +24,13 @@ public class QuoteController {
         this.quoteService = quoteService;
     }
 
+    @GetMapping("")
+    public String index() {
+        return "index";
+    }
+
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping
+    @GetMapping("/all")
     public List<Quote> getQuotes() {
         return quoteService.getQuotes();
     }
@@ -48,7 +53,7 @@ public class QuoteController {
         quoteService.updateQuote(id, title, quote, author);
     }
 
-    @PutMapping(path = "/json/{quoteId}")
+    @PutMapping(path = "/update/{quoteId}")
     public void updateQuote(@PathVariable("quoteId") Long id, @RequestBody Quote quote) {
         quoteService.updateQuote(quote);
     }
@@ -58,6 +63,14 @@ public class QuoteController {
     public Quote getRandomQuote() {
 
         return quoteService.getRandomQuote();
+
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(path = "{quoteId}")
+    public Quote getQuoteById(@PathVariable("quoteId") Long id) {
+
+        return quoteService.findById(id);
 
     }
 

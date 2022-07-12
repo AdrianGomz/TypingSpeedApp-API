@@ -95,4 +95,9 @@ public class QuoteService {
         return quotes.get(index);
     }
 
+    public Quote findById(Long id) {
+        Quote q = quoteRepository.findById(id).get();
+        return q;
+    }
+
 }

@@ -86,9 +86,9 @@ public class Quote {
     }
 
     public String getLength() {
-        if (quote.length() < 150) {
+        if (quote.length() < 300) {
             return "short";
-        } else if (quote.length() < 230) {
+        } else if (quote.length() < 500) {
             return "medium";
         }
         return "long";
