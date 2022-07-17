@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Typing speed API</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="header"><h2>Typing Speed API</h2></div>
+    <h1>Home</h1>
+    <div class="links">
+        <ul class="links-list">
+            <li><h2>Get Quotes</h2>
+                <ol>
+
+                    <li>
+                        <h3>Get a random quote:</h3>
+                        <a class = "link" href="https://typing-speed-api.herokuapp.com/random">https://typing-speed-api.herokuapp.com/random</a>
+                    </li>
+                    <li>
+                        <h3>Get get all the quotes:</h3>
+                        <a class = "link" href="https://typing-speed-api.herokuapp.com/all">https://typing-speed-api.herokuapp.com/all</a>
+                    </li>
+                    <li>
+                        <h3>Get by id</h3>
+                        <p>https://typing-speed-api.herokuapp.com/{id}</p>
+                    </li>
+                    <li>
+                        <h3>Get get all the quotes:</h3>
+                        <a class = "link" href="https://typing-speed-api.herokuapp.com/all">https://typing-speed-api.herokuapp.com/all</a>
+                    </li>
+                    
+                </ol>
+            </li>
+            <li>
+                <h2>Post Quote</h2>
+                <p>Send a json post request with:
+                    <ul>
+                        <li>title</li>
+                        <li>quote</li>
+                        <li>author</li>
+                        <li>publishedDate (optional)</li>
+                    </ul>
+                    <br/>
+                    To the home url: https://typing-speed-api.herokuapp.com/
+                </p>
+                </li>
+            <li>
+                <h2>Delete Quote</h2>
+                <p>Send a Delete request with the id of the quote you want to delete to the
+                    url: https://typing-speed-api.herokuapp.com/{id}
+                </p>
+            </li>
+            <li>
+                <h2>Update Quote</h2>
+                <p>Send a Put request with the id of the quote you want to update to the
+                    url: https://typing-speed-api.herokuapp.com/update/{id}
+                    <ul>
+                        <li>title</li>
+                        <li>quote</li>
+                        <li>author</li>
+                        <li>publishedDate (optional)</li>
+                    </ul>
+                </p>
+            </li>
+
+        </ul>
+    </div>
+</body>
+
+</html>

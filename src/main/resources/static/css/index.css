@@ -1,0 +1,25 @@
+body{
+    margin: 0;
+    font-family: Helvetica;
+}
+.header{
+    background-color: #155263;
+    color: aliceblue;
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+
+}
+h1{
+    margin: 120px 30px 30px;
+}
+.links{
+    margin-left: 30px;
+
+}
+.links-list{
+    list-style: none;
+}

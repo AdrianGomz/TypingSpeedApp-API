@@ -24,11 +24,6 @@ public class QuoteController {
         this.quoteService = quoteService;
     }
 
-    @GetMapping("")
-    public String index() {
-        return "index";
-    }
-
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/all")
     public List<Quote> getQuotes() {
