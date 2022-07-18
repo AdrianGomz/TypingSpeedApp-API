@@ -24,7 +24,7 @@ public class QuoteController {
         this.quoteService = quoteService;
     }
 
-    @CrossOrigin(origins = "https://typin-speed.netlify.app/")
+    @CrossOrigin(origins = "*")
     @GetMapping("/all")
     public List<Quote> getQuotes() {
         return quoteService.getQuotes();
@@ -53,7 +53,7 @@ public class QuoteController {
         quoteService.updateQuote(quote);
     }
 
-    @CrossOrigin(origins = "https://typin-speed.netlify.app/")
+    @CrossOrigin(origins = "*")
     @GetMapping(path = "/random")
     public Quote getRandomQuote() {
 
@@ -61,7 +61,7 @@ public class QuoteController {
 
     }
 
-    @CrossOrigin(origins = "https://typin-speed.netlify.app/")
+    @CrossOrigin(origins = "*")
     @GetMapping(path = "{quoteId}")
     public Quote getQuoteById(@PathVariable("quoteId") Long id) {
 
