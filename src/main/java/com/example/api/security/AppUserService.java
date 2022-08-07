@@ -28,4 +28,11 @@ public class AppUserService {
         }
     }
 
+    public void addRole(AppUser appUser, Role role) {
+        if (appUser.getRoles().contains(role)) {
+            return;
+        } else {
+            appUser.getRoles().add(role);
+        }
+    }
 }
