@@ -15,12 +15,12 @@ public class AppUserService {
         this.appUserRepository = appUserRepository;
     }
 
-    List<AppUser> getAppUsers() {
+    public List<AppUser> getAppUsers() {
         return appUserRepository.findAll();
     }
 
     public void saveAppUser(AppUser appUser) {
-        Optional<AppUser> appUserExist = appUserRepository.findByMail(appUser.getEmail());
+        Optional<AppUser> appUserExist = appUserRepository.findByEmail(appUser.getEmail());
         if (appUserExist.isPresent()) {
             throw new IllegalStateException("A user with this email already exist");
         } else {
